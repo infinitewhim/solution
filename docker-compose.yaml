@@ -1,0 +1,22 @@
+version: "3"
+services:
+  python-server:
+    build:
+      context: .
+    container_name: python-server
+    image: python-server
+    ports:
+      - "5000:5000"
+  prometheus:
+    container_name: prometheus-svc
+    image: prom/prometheus
+    ports: 
+      - "9090:9090"
+    command: --config.file=/etc/prometheus/prometheus.yaml
+    volumes:
+      - ./config/prometheus.yaml:/etc/prometheus/prometheus.yaml
+  grafana:
+    container_name: grafana-svc
+    image: grafana/grafana
+    ports:
+      - "3000:3000"

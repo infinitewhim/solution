@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: urlmonitor-deployment
+  labels:
+    app: urlmonitor
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: urlmonitor
+  template:
+    metadata:
+      labels:
+        app: urlmonitor
+    spec:
+      containers:
+      - name: urlmonitor
+        image: python-server:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: urlmonitor-service
+spec:
+  selector:
+    app: urlmonitor
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
