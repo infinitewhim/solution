@@ -15,3 +15,10 @@ In order to make the Prometheus in your cluster to scape our server(service), yo
 # Unittest
 At root directory of the repo, execute ```python3 -m unittest tests/test_app.py```.
 Unit tests can be triggered with pre-commit hooks.
+
+# Screenshots
+<img width="1440" alt="prometheus_url_status_up_down" src="https://user-images.githubusercontent.com/8725900/184554229-37b657cf-6a59-4f77-ad06-9383c7a7524a.png">
+<img width="1438" alt="prometheus_url_resp_time" src="https://user-images.githubusercontent.com/8725900/184554238-793d74e1-64a1-4c3d-8b00-dd56b0bffdb0.png">
+<img width="1429" alt="prometheus_url_resp_time2" src="https://user-images.githubusercontent.com/8725900/184554243-3be3bdc9-514b-42d8-b74b-852bed3846df.png">
+<img width="1431" alt="prometheus_url_status_up_dow<img width="1015" alt="grafana_status_up_down" src="https://user-images.githubusercontent.com/8725900/184554257-7caa2dcc-0d2f-4dd4-9e2c-509c1ff13134.png">
+n2" src="https://user-images.githubusercontent.com/8725900/184554249-ba27d541-4f10-499d-9d50-4307484c144b.png">
