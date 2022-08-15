@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: urlmonitor
-        image: python-server:latest
+        image: infinitewhim/python-server:latest
         ports:
         - containerPort: 5000
 ---

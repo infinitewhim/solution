@@ -1,6 +1,7 @@
 from flask import Response, Flask
 import prometheus_client
 import time
+import requests
 from threading import Thread
 from util import get_url_200_info, get_url_503_info
 
@@ -19,14 +20,19 @@ def start_monitor():
     # we could write some logic to make the infinite loop more robust,
     # but for simplicity, we keep it this way
     while True:
-        # 200 url
-        url_200_resp_time, url_200_status = get_url_200_info()
-        # 503 url
-        url_503_resp_time, url_503_status = get_url_503_info()
-        mapping["time"].labels("https://httpstat.us/200").set(url_200_resp_time)
-        mapping["time"].labels("https://httpstat.us/503").set(url_503_resp_time)
-        mapping["status"].labels("https://httpstat.us/200").set(url_200_status)
-        mapping["status"].labels("https://httpstat.us/503").set(url_503_status)
+        try:
+            # 200 url
+            url_200_resp_time, url_200_status = get_url_200_info()
+            # 503 url
+            url_503_resp_time, url_503_status = get_url_503_info()
+            mapping["time"].labels("https://httpstat.us/200").set(url_200_resp_time)
+            mapping["time"].labels("https://httpstat.us/503").set(url_503_resp_time)
+            mapping["status"].labels("https://httpstat.us/200").set(url_200_status)
+            mapping["status"].labels("https://httpstat.us/503").set(url_503_status)
+        except requests.exceptions.Timeout:
+            # could use logger
+            print("Timeout experienced when querying URLs....")
+
         time.sleep(1)
         if flag == False:
             break

@@ -1,5 +1,7 @@
 #!/bin/bash
 
-# Build server images in local. 
-# To make it simple for the test, we don't push the image to external registries
-docker build --tag python-server .
+# Build the image
+docker build --tag infinitewhim/python-server .
+
+# Push the image to dockerhub
+# docker push infinitewhim/python-server:latest

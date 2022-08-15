@@ -6,7 +6,7 @@ A docker-compose.yaml file has been provived in order to be able to test locally
 
 # Testing with K8S  
 ## Build process
-Executing ```./build.sh``` will build the python-server images( stored in your local ). To make it simple for the test, we don't push the image to external online registries
+Executing ```./build.sh``` will build the python-server images(  or we could do "build and push" as a step. I already pushed an image into my docker hub registry, therefore it can be pulled down). 
 
 ## Deploy to k8s cluster
 After setting up kube config correctly in you local, executing ```./deploy.sh``` will deploy our app into the cluster. There will be a deployment, and also a service.
